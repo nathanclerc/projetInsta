@@ -1,16 +1,34 @@
 <!DOCTYPE html>
-
-<html lang="fr">
-
 <head>
-
+<title></title>
+<html lang="fr">
 <meta charset="utf-8">
-
-	<title></title>
-
+<script src="/home/max/Bureau/ProjetInsta/node_modules/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/home/max/Bureau/ProjetInsta/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="Instagram.css">
 </head>
-
 <body>
 
+<div class="row">
+  <button id="like" type="button" class="btn btn-primary btn-lg" style="margin-left: 20px; margin-top: 20px;">like <p id="count"></p></button>
+</div>	
+
+<div class="row">
+	 <button id="like_0_1" type="button" class="btn btn-primary btn-lg" style="margin-left: 20px; margin-top: 20px;">like <p id="count_0_1"></p></button>
+
+<!-- 	  <button type="button" class="btn btn-primary btn-lg" style="margin-left: 20px; margin-top: 20px;"> <p id="count_c"></p></button>
+ --></div>
+
+<div>
+	<button id="comment" type="button" class="btn btn-primary btn-lg" style="margin-left: 20px; margin-top: 20px;">
+		comment
+    </button> 
+     <textarea  id="t_coment"></textarea>
+	<button id="ok">ok</button> 
+	<button id="show" type="button" class="btn btn-primary btn-lg">show comment</button>
+</div>
+ 
+ 
+<script  type="text/javascript" src="Instagram.js"></script>
 </body>
 </html>
