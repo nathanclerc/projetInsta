@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Création de compte</title>
+</head>
+<body>
+	<div style="display: flex; flex-direction: column; width: 30%; align-items: center;">
+		<label>Email</label>
+		<input type="email" name="mail" id="mail">
+		<label>Nom</label>
+		<input type="text" name="nom" id="nom">
+		<label>Prénom</label>
+		<input type="text" name="prenom" id="prenom">
+		<label>Age</label>
+		<input type="number" name="age" id="age">
+		<label>Identifiant</label>
+		<input type="text" name="identifiant" id="identifiant">
+		<label>Mot de passe</label>
+		<input type="password" name="mdp" id="password">
+		<label>Confirmer votre mot de passe</label>
+		<input type="password" name="confmdp" id="passwordconf">
+		<label>Coordonnées</label>
+		<textarea name="textarea"
+		rows="5" cols="50" id="coord"></textarea>
+		<label for="genre">Genre</label>
+		<select name="genre" id="genre">
+			<option>Homme</option>
+			<option>Femme</option>
+			<option>Indéterminé</option>
+		</select>
+		<label>Description</label>
+		<textarea name="textarea"
+		rows="10" cols="50" id="description"></textarea>
+		<button id="valider">Créer</button>
+	</div>
+
+	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="createAccount.js"></script>
+</body>
+</html>

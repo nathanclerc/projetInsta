@@ -1,15 +1,16 @@
 //tableau de comptes
-var logs = [
-{
-	indentifiant : 'Nathan',
-	password : 'Clerc'
-},
-{
-	indentifiant : 'Marco',
-	password : 'brezil'
-}
-];
-
+// var logs = [
+// {
+// 	identifiant : 'Nathan',
+// 	password : 'Clerc'
+// },
+// {
+// 	indentifiant : 'Marco',
+// 	password : 'brezil'
+// }
+// ];
+var logs = JSON.parse(window.localStorage.getItem("comptes"));
+console.log(logs);
 //vide les inputs au chargement
 $('#identifiant').val('');
 $('#password').val('');
@@ -27,7 +28,7 @@ $('#valider').click( function login(){
 	//parcour le tableau des comptes
 	for (compte in logs){
 	//compare les logs
-		if ( username == logs[compte].indentifiant && password == logs[compte].password){
+		if ( username == logs[compte].identifiant && password == logs[compte].password){
 			alert ("Login successfully");
 		//vide les inputs
 		$('#identifiant').val('');
