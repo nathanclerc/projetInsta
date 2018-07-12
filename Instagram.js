@@ -1,3 +1,16 @@
+//fonction de suppression
+function suppr(){
+	$('.close').click(function(){
+		var ligne = $(this).closest("tr");
+		var idTmp = ligne.find(".id").text();
+		var coment = JSON.parse(window.localStorage.getItem("comment"));
+		coment.splice(idTmp, 1);
+		var val = JSON.stringify(coment);
+		window.localStorage.setItem("comment", val);
+		location.href="Instagram.html";
+	});
+}
+
 $("#t_coment").hide();
 $("#ok").hide();
 $("#show").hide(); 
@@ -9,16 +22,21 @@ var coment=[];
 
 
 var coment = JSON.parse(window.localStorage.getItem("comment"));
-for (var i = 0; i < coment.length; i++) {
-		$('#commentaires').append('<p>' + coment[i] + '</p>');
-	}
+if (coment != null) {
+	for (var i = 0; i < coment.length; i++) {
+		$('#comment_table').append('<tr><td class="id">'+i+'</td><td>' + coment[i] + 
+			'<a class="close " data-dismiss="alert" aria-label="close">&times;</a></td></tr>');
+	}	
+}
+$('.id').hide();
+suppr();
 //////////////////////////////:
 
 
 $("#comment").click(function()
 {   
-	$("#t_coment").show();
 	$("#comment").hide(); 
+	$("#t_coment").show();
 	$("#ok").show();
 	
 
@@ -34,14 +52,18 @@ $("#ok").click( function(){
 	coment.push(commentaire);
 	var val = JSON.stringify(coment);
 	window.localStorage.setItem("comment", val);
-	                    //console.log(commentaire);
-	                    $("#t_coment").hide();
-	                    $("#ok").hide();
-	                    $("#comment").show();
-	$('#commentaires').empty();
+	$("#t_coment").hide();
+	$("#ok").hide();
+	$("#comment").show();
+	$('#comment_table').empty();
 	for (var i = 0; i < coment.length; i++) {
-		$('#commentaires').append('<p>' + coment[i] + '</p>');
+		$('#comment_table').append('<tr><td class="id">'+i+'</td><td>' + coment[i] + 
+			'<a class="close " data-dismiss="alert" aria-label="close">&times;</a></td></tr>');
 	}
+	$("#t_coment").val('');
+	$('.id').hide();
+	suppr();
+
 });
 
 ////////////////////////////////////////////////////////////////////
