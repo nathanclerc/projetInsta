@@ -1,19 +1,17 @@
-//tableau de comptes
-// var logs = [
-// {
-// 	identifiant : 'Nathan',
-// 	password : 'Clerc'
-// },
-// {
-// 	indentifiant : 'Marco',
-// 	password : 'brezil'
-// }
-// ];
-var logs = JSON.parse(window.localStorage.getItem("comptes"));
-console.log(logs);
+//délais avant l'ouverture de la deuxième modal (patch d'un bug)
+$('#createAccount').click( function(){
+	setTimeout(mod, 500);
+});
+function mod(){
+	$('#modalAccount').modal('toggle');
+};
+
 //vide les inputs au chargement
 $('#identifiant').val('');
 $('#password').val('');
+
+//récupère les comptes du local storage
+var logs = JSON.parse(window.localStorage.getItem("comptes"));
 
 //garde en mémoire si les logs sont bon, par défault ils sont faux
 var connection = false;
@@ -28,22 +26,22 @@ $('#valider').click( function login(){
 	//parcour le tableau des comptes
 	for (compte in logs){
 	//compare les logs
-		if ( username == logs[compte].identifiant && password == logs[compte].password){
-			alert ("Login successfully");
+	if ( username == logs[compte].identifiant && password == logs[compte].password){
+		alert ("Login successfully");
 		//vide les inputs
 		$('#identifiant').val('');
 		$('#password').val('');
 		connection = true;
 		//window.location = "profile.html"; // Redirecting to other page.
-			return false;
-		}
+		return false;
+	}
 		//compare si la connection a échoué
 	} if (connection === false){
 		// décrémente par un
-			attempt --;
-			alert("Il vous reste "+attempt+" tentatives.");
+		attempt --;
+		alert("Il vous reste "+attempt+" tentatives.");
 		// Désactive les champs et le bouton au bout de 3 tentatives
-			if( attempt === 0){
+		if( attempt === 0){
 				//vide les inputs
 				$('#identifiant').val('');
 				$('#password').val('');
@@ -54,6 +52,77 @@ $('#valider').click( function login(){
 				return false;
 			}
 		}
-	
-});
 
+	});
+
+//création de compte
+//vide les inputs au chargments de la page
+$('#nom').val('');
+$('#prenom').val('');
+$('#age').val('');
+$('#mail').val('');
+$('#identifiant').val('');
+$('#password').val('');
+$('#passwordconf').val('');
+$('#coord').val('');
+$('#description').val('');
+//fonction de création de compte
+$('#create').click(function (){
+	//récupère la valeur des inputs des mots de passe
+	var passwordSet = $('#passwordCr').val();
+	var passwordConf = $('#passwordconf').val();
+	//compare les mots de passe, si ils sont identique éxecution du code sinon il passe dans le else
+	if (passwordSet === passwordConf) {
+		//récupération de la valeur de tout les inputs
+		var nomSet = $('#nom').val();
+		var prenomSet = $('#prenom').val();
+		var ageSet = $('#age').val();
+		var emailSet = $('#mail').val();
+		var identifiantSet = $('#identifiantCr').val();
+		var passwordSet = $('#passwordCr').val();
+		var passwordConf = $('#passwordconf').val();
+		var coordSet = $('#coord').val();
+		var genreSet = $('#genre option:selected').val();
+		var descriptionSet = $('#description').val();
+		//récupère les comptes existant dans le local storage
+		var dataParse = JSON.parse(window.localStorage.getItem("comptes"));
+		//si il n'y a pas de compte dans le local storage
+		if (dataParse == null) {
+			//création d'un tableau
+			var dataParse = [];
+			alert('Premier ajout fait');
+		}
+		//envois les valeurs récupéré dans le tableau dataParse sous forme dans un ojbet
+		dataParse.push({
+			nom : nomSet,
+			prenom : prenomSet,
+			age : ageSet,
+			mail : emailSet,
+			identifiant : identifiantSet,
+			password : passwordSet,
+			coordonees : coordSet,
+			genre : genreSet,
+			description : descriptionSet
+		});
+		//stringify le tableau dataParse
+		var val = JSON.stringify(dataParse);
+		//envois dans le tableau dataParse dans le local storage
+		window.localStorage.setItem("comptes", val);
+		//vide les inputs
+		$('#nom').val('');
+		$('#prenom').val('');
+		$('#age').val('');
+		$('#mail').val('');
+		$('#identifiant').val('');
+		$('#password').val('');
+		$('#passwordconf').val('');
+		$('#coord').val('');
+		$('#description').val('');
+		//rechargement de la page
+		location.href="log.html";
+	}
+	//si les mots de passe ne sont pas identiques
+	else{
+		alert('Vos mots de passe sont pas identiques.')
+	}
+});

@@ -14,39 +14,33 @@ $('#valider').click(function (){
 		var genreSet = $('#genre option:selected').val();
 		var descriptionSet = $('#description').val();
 
-		if (nomSet === '' || prenomSet === '') {
-
-			alert('Nom et prénom obligatoires');
-
-		}else{
-			var dataParse = JSON.parse(window.localStorage.getItem("comptes"));
-			if (dataParse == null) {
-				var dataParse = [];
-				alert('Premier ajout fait');
-			}
-			dataParse.push({
-				nom : nomSet,
-				prenom : prenomSet,
-				age : ageSet,
-				mail : emailSet,
-				identifiant : identifiantSet,
-				password : passwordSet,
-				coordonees : coordSet,
-				genre : genreSet,
-				description : descriptionSet
-			});
-			var val = JSON.stringify(dataParse);
-			window.localStorage.setItem("comptes", val);
-			$('#nom').val('');
-			$('#prenom').val('');
-			$('#age').val('');
-			$('#mail').val('');
-			$('#identifiant').val('');
-			$('#password').val('');
-			$('#passwordconf').val('');
-			$('#coord').val('');
-			$('#description').val('');
+		var dataParse = JSON.parse(window.localStorage.getItem("comptes"));
+		if (dataParse == null) {
+			var dataParse = [];
+			alert('Premier ajout fait');
 		}
+		dataParse.push({
+			nom : nomSet,
+			prenom : prenomSet,
+			age : ageSet,
+			mail : emailSet,
+			identifiant : identifiantSet,
+			password : passwordSet,
+			coordonees : coordSet,
+			genre : genreSet,
+			description : descriptionSet
+		});
+		var val = JSON.stringify(dataParse);
+		window.localStorage.setItem("comptes", val);
+		$('#nom').val('');
+		$('#prenom').val('');
+		$('#age').val('');
+		$('#mail').val('');
+		$('#identifiant').val('');
+		$('#password').val('');
+		$('#passwordconf').val('');
+		$('#coord').val('');
+		$('#description').val('');
 	}else{
 		alert('Vos mots de passe sont pas identiques.')
 	}
