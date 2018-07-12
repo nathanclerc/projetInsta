@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>page admin</title>
+	<link rel="stylesheet" type="text/css" href="admin.css">
 </head>
 <body>
 	<!-- affichage du profil de l'admin et du bouton de mofication -->
-	<div id="profil" style="display: flex; flex-direction: row; justify-content: space-around;">
-		<div>
+	<div id="profil">
+		
+		<div id="profil-info">
 			<p>Administrateur</p>
-			<p id="info_profil"></p>
+
+			<div class="roundedImage">
+				
+			</div>
+
+			<p id="info"><!-- inserer les info profil stocker dans le localstorage --></p> 
 		</div>
-		<button>Modifier le profil</button>
-
+		<div id="profil-modif">
+			<button class="bouton" id="modif">Modifier le profil</button>
+		</div>
 	</div>
 
-	<!-- fonction ajouter du contenue -->
-	<div id="contenu" style="display: flex; flex-direction: column; align-items: center;">
-		<p>ajouter du contenue</p>
+<!-- fonction ajouter du contenue -->
+<div id="contenu">
+	<p>ajouter du contenue</p>
 
-		<!-- intégrer fonction ajout photo Binjamin -->
-		<button id="photo">Ajouter une Photo</button>
-		<textarea id="commentaire"
-		rows="10" cols="50">
-		Ajouter un commentaire ici.
-		</textarea>
-		<button id="valider">Valider</button>
-	</div>
+	<!-- intégrer fonction ajout photo Binjamin -->
+	<button class="bouton" id="photo">Ajouter une Photo</button>
+	<textarea class="bouton" id="commentaire"
+	rows="10" cols="50">
+	Ajouter un commentaire ici.
+</textarea>
+<button class="bouton" id="valider">Valider</button>
+</div>
 
 </body>
 </html>
