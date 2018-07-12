@@ -1,0 +1,74 @@
+#title{
+
+	font-size:40px; 
+	margin-left: 325px;	
+}
+
+body{
+
+	position: absolute;
+}
+
+table{
+	
+	font-size: 28px;
+}
+
+.connexion{		/*button connexion*/
+
+	display: flex;
+	margin-left: 1400px;
+}
+
+#hautProfil{ 	/*photo*/
+
+	display: flex;
+	flex-direction: row;
+}
+
+.rounded{		/*photo*/
+
+	height: 250px;
+}
+
+#photo{			/*photo*/
+
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	align-items: flex-end;
+	width: 32%;
+}
+
+#thème{			/*deuxieme photo*/
+
+	width: 35%;
+	margin-left: 325px;	  
+}
+
+#nombrelikes{  /*Vous avez... likes*/
+
+	font-size: 30px;
+	margin-top: 15px;
+	margin-left: 330px;
+}
+
+
+
+.butlike{	/*button like*/
+
+	display: flex;
+	flex-direction: row;
+	margin-left: 750px;
+	width: 100px;
+}
+
+#commen{  /*Ajouter un commentaire :*/
+
+	font-size: 30px;
+	margin-left: 330px;
+}
+
+
+
+
