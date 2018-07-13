@@ -10,13 +10,9 @@
 	justify-content: space-around;
 }
 
-.roundedImage{
-	background:url(photo-profil.png)
-	no-repeat 0px 0px;
+.photo-ronde{
 	overflow:hidden;
 	border-radius:50%;
-	width:180px;
-	height:180px;
 }
 
 #profil-info{
@@ -26,13 +22,16 @@
 }
 
 #info{
-	display: flex;
-	align-items: center;
+	/*display: flex;
+	flex-direction: column;
+	justify-content: flex-start;*/
 }
 
 #profil-modif{
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	justify-content: space-around;
+	//align-items: center;
 
 }
 
