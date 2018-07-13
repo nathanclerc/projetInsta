@@ -10,31 +10,37 @@
 	<div id="profil">
 		
 		<div id="profil-info">
-			<p>Administrateur</p>
+			<h4>Administrateur</h4>
 
-			<div class="roundedImage">
-				
-			</div>
-
-			<p id="info"><!-- inserer les info profil stocker dans le localstorage --></p> 
+			<div class="roundedImage"></div>
 		</div>
+
+		<div id="info">
+			<!-- inserer les info profil stocker dans le localstorage -->
+			<!-- <p id=nom></p>-->
+		</div> 
+
 		<div id="profil-modif">
 			<button class="bouton" id="modif">Modifier le profil</button>
 		</div>
+
 	</div>
 
 <!-- fonction ajouter du contenue -->
 <div id="contenu">
-	<p>ajouter du contenue</p>
+	<h2>Ajouter du contenue</h2>
 
 	<!-- intégrer fonction ajout photo Binjamin -->
 	<button class="bouton" id="photo">Ajouter une Photo</button>
 	<textarea class="bouton" id="commentaire"
-	rows="10" cols="50">
-	Ajouter un commentaire ici.
+	rows="10" cols="50"
+	placeholder="Ajouter un commentaire ici.">
 </textarea>
 <button class="bouton" id="valider">Valider</button>
 </div>
+
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="admin.js"></script>
 
 </body>
 </html>

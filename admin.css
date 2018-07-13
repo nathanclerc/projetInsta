@@ -25,6 +25,11 @@
 	align-items: center;
 }
 
+#info{
+	display: flex;
+	align-items: center;
+}
+
 #profil-modif{
 	display: flex;
 	align-items: center;

@@ -6,12 +6,19 @@ function mod(){
 	$('#modalAccount').modal('toggle');
 };
 
+
+
 //vide les inputs au chargement
 $('#identifiant').val('');
 $('#password').val('');
 
 //récupère les comptes du local storage
 var logs = JSON.parse(window.localStorage.getItem("comptes"));
+
+//vérifie si un compte existe déjà, si oui cache le bouton créer un compte
+if (logs != null) {
+	$('#createAccount').hide();
+}
 
 //garde en mémoire si les logs sont bon, par défault ils sont faux
 var connection = false;
