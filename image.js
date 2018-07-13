@@ -4,7 +4,7 @@ console.log("coucou !!")
 
 
 function addPhoto(){
-	$("#divimage").empty();
+	$("#contenu").empty();
 	var photo = JSON.parse(window.localStorage.getItem("photos"));
 //store in local storage
 	if (photo == null) {
@@ -19,7 +19,7 @@ function addPhoto(){
 //recup this array
 	for (var i = 0; i < photo.length; i++)	{
 
-		$("#divimage").append('<img class="img-fluid" src="images/' + photo[i] + '"/>');
+		$("#contenu").append('<div class="thème"><a class="photo" href="#"><img class="img-fluid" src="images/' + photo[i] + '"/></a></div>');
 
 	}
 //display images

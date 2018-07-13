@@ -138,6 +138,22 @@ $('#create').click(function (){
 	}
 });
 
+$('#bidon').hide();
+
+//afficher les images du local storage
+$("#contenu").empty();
+var photo = JSON.parse(window.localStorage.getItem("photos"));
+//store in local storage
+if (photo == null) {
+	var photo = [];
+}
+//recup this array
+for (var i = 0; i < photo.length; i++)	{
+
+	$("#contenu").append('<div class="thème col-sm-2"><a class="photo" href="#"><img class="img-fluid" src="images/' + photo[i] + '"/></a></div>');
+
+}
+
 $('.photo').click( function(){
 	$('#image').empty();
 	var image = $(this).find("img")
@@ -153,3 +169,139 @@ $('.photo').click( function(){
 	// });
 });
 
+
+
+
+
+//like function//////////
+var likeCount = 0;  //  count funtion
+var clickCount = 0;   // count funtion
+$("#likes").click(function()
+{  
+   var result1=likes();
+   localStorage1(result1); 
+})
+function likes() 
+{
+            if (clickCount == 1)
+            {
+                clickCount = 0;
+                likeCount--;
+            }else
+            {
+                clickCount++;
+                likeCount++;
+            } 
+            return likeCount;
+}
+function localStorage1(result) 
+{
+         if (result==1)
+       {
+          $( "#likes" ).addClass( "blue" );
+        }else
+       if(result==0)
+       {
+          $( "#likes" ).removeClass( "blue" );    
+       }
+var val = JSON.parse(window.localStorage.getItem("comment"));
+
+   if (result == 1)
+    {
+        if (val == null)
+         {
+              val =1;
+            alert('Premier like');
+         }else 
+         if(val >= 0)
+         {
+             val ++;
+         }
+    }else
+    if (result == 0)
+    {
+        if (val == 0)
+         {
+                alert('no commentaire');
+
+         }else 
+         if(val >= 0)
+         {
+             val --;
+         }
+    }
+       var val1 = JSON.stringify(val);
+       window.localStorage.setItem("comment", val1)
+       $('#nombrelikes').empty();
+        $('#like').empty();
+        $('#nombrelikes').append('<P>Vous avez '+val+' likes</P>');
+}
+////////////////////////// comenter
+$("#t_coment").hide();
+$("#ok").hide(); 
+$("#comment_div").hide(); 
+$("#comment").click(function()
+{  
+    $("#t_coment").show();
+    $("#comment").hide(); 
+    $("#ok").show();    
+}); 
+$("#ok").click( function()
+{
+    ok();
+});
+function ok()
+{
+    if ($("#t_coment").val()!="")
+         {
+            var coment = JSON.parse(window.localStorage.getItem("commentt"));
+                if (coment == null)
+                 {
+                     var coment =[];
+                    alert('Premier commentaire');
+                    pushh(coment);
+                 }else
+                 {
+                    pushh(coment);
+                 }
+            $("#t_coment").hide();
+            $("#ok").hide();
+            $("#comment").show();    
+         }else 
+         {
+             confirm("empty input");
+             $("#t_coment").hide();
+            $("#ok").hide();
+            $("#comment").show();
+         }
+}
+function pushh(coment)
+ {
+    coment.push($("#t_coment").val());
+    var val = JSON.stringify(coment);
+    window.localStorage.setItem("commentt", val);
+ }
+/////////////////////////////////  
+
+
+$("#list").click( function()
+{
+    $('#list_coment').empty(); 
+    var coment = JSON.parse(window.localStorage.getItem("commentt"));
+        if (coment!=null || coment!=[])
+                 {
+                    for (var i = 0; i < coment.length; i++) 
+                        {
+                                   $('#list_coment').append('<div id="'+i+'" class="alert alert-danger alert-dismissible"><a class="close " data-dismiss="alert" aria-label="close">&times;</a><li class="list-group-item">'+coment[i]+'</li></div>');
+                        }
+                }else {confirm("empty");}
+/// supremer
+                $(".close").click(function()
+                {  
+                          var ligne = $(this);
+                        var coment = JSON.parse(window.localStorage.getItem("commentt"));
+                        coment.splice(ligne, 1);
+                        var val = JSON.stringify(coment);
+                        window.localStorage.setItem("commentt", val);
+                 })
+});
