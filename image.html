@@ -4,40 +4,25 @@
 	<meta charset="utf-8">
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="upload_image.css">
+	<link rel="stylesheet" type="text/css" href="image.css">
 </head>
 <body>
-	<div id="upload">
-		<button id="display">display</button>
-	</div>
-	
-	<div class="row" id="dispimg" >
-		<div class="col-sm-4" class="img" >
-			<input type="file" class="image" />
-			<img class="img-fluid" class="preview" src=""/>
-			
-		</div>
-		<div class="col-sm-4" class="img" >
-			<input type="file" class="image" />
-			<img class="img-fluid" class="preview" src=""/>
 
-		</div>
-		<div class="col-sm-4" class="img" >
-			<input type="file" class="image" />
-			<img class="img-fluid" class="preview" src=""/>
-			
-		</div>
+
+	<input type="file" name="image" id="image" value="">
+	<!-- input for load images. We need store this images in file "images" inside our working file --> 
+	<button id="disp">Display</button>
+
+	<div class=row></div>
+
+	<div id="divimage" class="img">
+		
 		
 	</div>
 
 
-
 	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-
-
-	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
-
-	<script type="text/javascript" src="upload_image.js"></script>
+	<script type="text/javascript" src="image.js"></script>
 </body>
 </html>

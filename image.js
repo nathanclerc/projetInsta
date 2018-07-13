@@ -3,32 +3,76 @@ console.log("coucou !!")
 
 
 
+function addPhoto(){
+	$("#divimage").empty();
+	var photo = JSON.parse(window.localStorage.getItem("photos"));
+//store in local storage
+	if (photo == null) {
+		var photo = [];
+	}
+//create empty array
+	var newimage =document.getElementById("image").files[0].name;
+//create var contain images names
+	photo.push(newimage);
+//push in empty array
+	window.localStorage.setItem("photos", JSON.stringify(photo));
+//recup this array
+	for (var i = 0; i < photo.length; i++)	{
+
+		$("#divimage").append('<img class="img-fluid" src="images/' + photo[i] + '"/>');
+
+	}
+//display images
+
+}
 
 
-$(function(){
-	$("#display").click(load_click);
+// var photo = JSON.parse(window.localStorage.getItem("photos"));
 
+// if (photo == null) {
+// 	var photo = [];
+// }
+
+// var newimage =document.getElementById("image").files[0].name;
+
+// photo.push(newimage);
+
+// window.localStorage.setItem("photos", JSON.stringify(photo));
+
+// for (var i = 0; i < photo.length; i++)	{
+
+// 	$("#divimage").append('<img src="images/' + photo[i] + '"/>');
+
+// }
+
+
+
+
+$("#disp").click(function(){
+	addPhoto();
 })
 
-function load_click() {
-	
-	$(".image").each(function() {
-		$(this).hide()
 
-		var input = $(this);
-		var inputFiles = this.files;
-		
-		if(inputFiles == undefined || inputFiles.length == 0) 
-			return;
-		var inputFile = inputFiles[0];
+// function previewFile() {
+//   var preview = document.querySelector('img');
+//   var file    = document.querySelector('input[type=file]').files[0];
+//   var reader  = new FileReader();
 
-		var reader = new FileReader();
-		reader.onload = function(event) {
-			input.next().attr("src", event.target.result);
-		};
-		reader.onerror = function(event) {
-			alert(" ERROR: " + event.target.error.code);
-		};
-		reader.readAsDataURL(inputFile);
-	});
-}
+//   reader.addEventListener("load", function () {
+//     preview.src = reader.result;
+//   }, false);
+
+//   if (file) {
+//     reader.readAsDataURL(file);
+//   }
+
+//  console.log(preview);
+
+// }
+
+
+// 		$.post('image.php', function (result) {
+// $("#upload").append(result);
+// });
+
+
