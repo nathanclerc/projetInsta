@@ -19,6 +19,11 @@ $('#password').val('');
 //récupère les comptes du local storage
 var logs = JSON.parse(window.localStorage.getItem("comptes"));
 
+//vérifie si un compte existe déjà, si oui cache le bouton créer un compte
+if (logs != null) {
+	$('#createAccount').hide();
+}
+
 //garde en mémoire si les logs sont bon, par défault ils sont faux
 var connection = false;
 // compte le nombre de tentatives
@@ -33,12 +38,12 @@ $('#valider').click( function login(){
 	for (compte in logs){
 	//compare les logs
 	if ( username == logs[compte].identifiant && password == logs[compte].password){
-		alert ("Login successfully");
 		//vide les inputs
 		$('#identifiant').val('');
 		$('#password').val('');
 		connection = true;
-		//window.location = "profile.html"; // Redirecting to other page.
+		//redirige vers la page admin
+		location.href="admin.html";
 		return false;
 	}
 		//compare si la connection a échoué
@@ -132,3 +137,19 @@ $('#create').click(function (){
 		alert('Vos mots de passe sont pas identiques.')
 	}
 });
+
+$('.photo').click( function(){
+	$('#image').empty();
+	var image = $(this).find("img")
+	image = image.attr('src');
+	console.log(image);
+	$('<img src="'+image+'" alt="Instagram">').appendTo('#image');
+	$('#modalImage').modal('toggle');
+	// var div = $(this).closest(".thème");
+	// div.css("width", "50%");
+	// $(this).click( function(){
+	// 	div.css("width", "16%");
+	// 	location.href="Profile.html";
+	// });
+});
+

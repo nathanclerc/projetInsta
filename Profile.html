@@ -2,7 +2,7 @@
 
 <html lang="fr">
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="Instagram.css">
+<link rel="stylesheet" type="text/css" href="Profile.css">
 <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 <head>
 
@@ -13,144 +13,229 @@
 <body>
 
 	<nav class="navbar navbar-light bg-light">
-	  
-	  <h1>INSTAKILO</h1>
-		<button id="connect" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-		Connection
-		</button>
-
+		<div id="navigation">
+			<img id="logo" src="logo/5.png">
+			<h1>INSTAKILO</h1>
+			<button id="connect" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+			Connection
+			</button>
+		</div>
 	<!-- Modal login-->
-	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalCenterTitle">Connection</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div>
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">Connection</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
 						<div>
+							<div>
+								<label>Identifiant</label>
+								<input type="text" name="identifiant" id="identifiant">
+							</div>
+							<div>
+								<label>Password</label>
+								<input type="password" name="password" id="password">
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+						<button id="valider" type="button" class="btn btn-primary">Connection</button>
+						<button id="createAccount" type="button" class="btn btn-primary" data-dismiss="modal">Créer un compte</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal create account-->
+		<div class="modal fade" id="modalAccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div style="display: flex; flex-direction: column; align-items: center;">
+							<label>Email</label>
+							<input type="email" name="mail" id="mail">
+							<label>Nom</label>
+							<input type="text" name="nom" id="nom">
+							<label>Prénom</label>
+							<input type="text" name="prenom" id="prenom">
+							<label>Age</label>
+							<input type="number" name="age" id="age">
 							<label>Identifiant</label>
-							<input type="text" name="identifiant" id="identifiant">
-						</div>
-						<div>
-							<label>Password</label>
-							<input type="password" name="password" id="password">
+							<input type="text" name="identifiant" id="identifiantCr">
+							<label>Mot de passe</label>
+							<input type="password" name="mdp" id="passwordCr">
+							<label>Confirmer votre mot de passe</label>
+							<input type="password" name="confmdp" id="passwordconf">
+							<label>Coordonnées</label>
+							<textarea name="textarea"
+							rows="5" cols="50" id="coord"></textarea>
+							<label for="genre">Genre</label>
+							<select name="genre" id="genre">
+								<option>Homme</option>
+								<option>Femme</option>
+								<option>Indéterminé</option>
+							</select>
+							<label>Description</label>
+							<textarea name="textarea"
+							rows="10" cols="50" id="description"></textarea>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-					<button id="valider" type="button" class="btn btn-primary">Connection</button>
-					<button id="createAccount" type="button" class="btn btn-primary" data-dismiss="modal">Créer un compte</button>
+					<div class="modal-footer" style="display: flex; justify-content: center;">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button id="create" type="button" class="btn btn-primary">Créer un compte</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<!-- Modal create account-->
-	<div class="modal fade" id="modalAccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div style="display: flex; flex-direction: column; align-items: center;">
-						<label>Email</label>
-						<input type="email" name="mail" id="mail">
-						<label>Nom</label>
-						<input type="text" name="nom" id="nom">
-						<label>Prénom</label>
-						<input type="text" name="prenom" id="prenom">
-						<label>Age</label>
-						<input type="number" name="age" id="age">
-						<label>Identifiant</label>
-						<input type="text" name="identifiant" id="identifiantCr">
-						<label>Mot de passe</label>
-						<input type="password" name="mdp" id="passwordCr">
-						<label>Confirmer votre mot de passe</label>
-						<input type="password" name="confmdp" id="passwordconf">
-						<label>Coordonnées</label>
-						<textarea name="textarea"
-						rows="5" cols="50" id="coord"></textarea>
-						<label for="genre">Genre</label>
-						<select name="genre" id="genre">
-							<option>Homme</option>
-							<option>Femme</option>
-							<option>Indéterminé</option>
-						</select>
-						<label>Description</label>
-						<textarea name="textarea"
-						rows="10" cols="50" id="description"></textarea>
-					</div>
-				</div>
-				<div class="modal-footer" style="display: flex; justify-content: center;">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button id="create" type="button" class="btn btn-primary">Créer un compte</button>
-				</div>
-			</div>
-		</div>
-	</div>
 	</nav>
-		<p></p>
-		
-	<button type="button" class="connexion btn-secondary ">Connexion</button>
-		
-		<div id="title">		
-			<p>L'auteur:</p>	
-		</div>
-		
-		<div id="hautProfil">
-		<div id="photo">
-		
-		<div id="prof">
-			<img src="photo.jpg" class="rounded" alt="Instagram"> 
-
-		</div>
-		</div>	
-		
+	<div>
 		<div>
-			<p></p>
-				<table>
-				  <tr>
-				  	 <td>Jill Smith</td>
-				  </tr>
-				  <tr>
-				    <td>Âge : 28 ans</td>
-				  </tr>
-				  <tr>
-				    <td>Profession : actrice</td>
-				  </tr>
-				  <tr>
-				  	<td>Passion : musique</td>
-				  </tr>	
-				 </table>
+			<div id="title">		
+				<h1>L'auteur:</h1>	
+			</div>
+			<div id="hautProfil">
+				<div id="photo">
+					<div id="prof">
+						<img src="photo.jpg" class="rounded" alt="Instagram"> 
 					</div>
-					</div>
-		<p></p>
-			
-		<div id="thème">
-			<img src="theme.svg" class="thème" alt="Instagram">		
-			
+				</div>
+				<div>
+					<table>
+						<tr>
+						  	<td>Jill Smith</td>
+						</tr>
+						<tr>
+						    <td>Âge : 28 ans</td>
+						</tr>
+						<tr>
+						    <td>Profession : actrice</td>
+						</tr>
+						<tr>
+						  	<td>Passion : musique</td>
+						</tr>	
+					</table>
+				</div>
+			</div>	
 		</div>
-		
-		<div id="nombrelikes">
-				<P>Vous avez 12 likes</P>
-		</div>	
-			
-	<button type="button" class="butlike btn-primary btn-lg">Like</button>
-		<p></p>
-		
-		<div id="commen">
-			<p>Ajouter un commentaire :</p>
+		<div id="contenu">
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div><div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
+			<div class="thème">
+				<a class="photo" href="#"><img src="theme.svg" alt="Instagram"></a>	
+			</div>
 		</div>
-
+		<div class="modal" id="modalImage" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">Modal title</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+			    <div class="modal-body" id="image">
+			
+			    </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
 	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
