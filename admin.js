@@ -1,4 +1,23 @@
-//redirection du bouton log-out vers la page d'acceuil 
+//affichage des information du profil contenu dans le local storage
+
+var info = JSON.parse(localStorage.getItem("comptes"));
+
+if (info != null) {
+for (var i =0; i<info.length; i++) {
+//$("#info").append("<tr><td>"+info[i].nom+"</td><td>"+info[i].prenom+"</td><td>"+info[i].age+"</td><td>"+info[i].mail+"</td><td>"+info[i].identifiant+"</td><td>"+info[i].genre+"</td><td>"+info[i].description+"</td></tr>");
+//$('#info').append("<Nom : "+info[i].nom+"</p><p>Prénom : "+info[i].prenom+"</p><p>Age : "+info[i].age+"</p><p>Mail : "+info[i].mail+"</p><p>Identifiant : "+info[i].identifiant+"</p><p>Mot de passe : "+info[i].password+"</p><p>Coordonees : "+info[i].coordonees+"</p><p>Genre : "+info[i].genre+"</p><p>Description : "+info[i].description+"</p>");
+$('#info').append("<div>Nom : "+info[i].nom+"</div>");
+$('#info').append("<>Prénom : "+info[i].prenom+"</p>");
+$('#info').append("<p>Age : "+info[i].age+"</p>");
+$('#info').append("<p>Mail : "+info[i].mail+"</p>");
+$('#info').append("<p>Identifiant : "+info[i].identifiant+"</p>");
+//$('#info').append("<p>Mot de passe : "+info[i].password+"</p>");
+$('#info').append("<p>Coordonees : "+info[i].coordonees+"</p>");
+$('#info').append("<p>Genre : "+info[i].genre+"</p>");
+$('#info').append("<p>Description : "+info[i].description+"</p>");
+};
+}
+//redirection du bouton de déconexion vers la page d'acceuil 
 
 $("#deconexion").click(function(){
 	document.location.href="Profile.html";
@@ -62,24 +81,6 @@ $('#modif').click(function (){
 });
 
 
-//affichage des information du profil contenu dans le local storage
-
-var info = JSON.parse(localStorage.getItem("comptes"));
-
-for (var i =0; i<info.length; i++) {
-//$("#info").append("<tr><td>"+info[i].nom+"</td><td>"+info[i].prenom+"</td><td>"+info[i].age+"</td><td>"+info[i].mail+"</td><td>"+info[i].identifiant+"</td><td>"+info[i].genre+"</td><td>"+info[i].description+"</td></tr>");
-//$('#info').append("<p>Nom : "+info[i].nom+"</p><p>Prénom : "+info[i].prenom+"</p><p>Age : "+info[i].age+"</p><p>Mail : "+info[i].mail+"</p><p>Identifiant : "+info[i].identifiant+"</p><p>Mot de passe : "+info[i].password+"</p><p>Coordonees : "+info[i].coordonees+"</p><p>Genre : "+info[i].genre+"</p><p>Description : "+info[i].description+"</p>");
-$('#info').append("<p>Nom : "+info[i].nom+"</p>");
-$('#info').append("<p>Prénom : "+info[i].prenom+"</p>");
-$('#info').append("<p>Age : "+info[i].age+"</p>");
-$('#info').append("<p>Mail : "+info[i].mail+"</p>");
-$('#info').append("<p>Identifiant : "+info[i].identifiant+"</p>");
-$('#info').append("<p>Mot de passe : "+info[i].password+"</p>");
-$('#info').append("<p>Coordonees : "+info[i].coordonees+"</p>");
-$('#info').append("<p>Genre : "+info[i].genre+"</p>");
-$('#info').append("<p>Description : "+info[i].description+"</p>");
-
-};
 
 $('#modifier').click( function(){
 	var dataParse = JSON.parse(window.localStorage.getItem("comptes"));
@@ -94,3 +95,36 @@ $('#modifier').click( function(){
 		$('#description').val(dataParse[id].description);
 	}
 });
+
+// fonction ajout photo
+
+
+
+function addPhoto(){
+	$("#divimage").empty();
+	var photo = JSON.parse(window.localStorage.getItem("photos"));
+//store in local storage
+	if (photo == null) {
+		var photo = [];
+	}
+//create empty array
+	var newimage =document.getElementById("image").files[0].name;
+	console.log(newimage);
+//create var contain images names
+	photo.push(newimage);
+//push in empty array
+console.log(photo);
+	window.localStorage.setItem("photos", JSON.stringify(photo));
+//recup this array
+	for (var i = 0; i < photo.length; i++)	{
+
+		$("#divimage").append('<div class="col-sm-4" class="thème"><a class="photo" href="#"><img class="img-fluid" id="photodisp" src="images/' + photo[i] + '"/></a></div>');
+
+	}
+//display images
+
+}
+
+$("#photo").click(function(){
+	addPhoto();
+})

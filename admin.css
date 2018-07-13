@@ -32,7 +32,10 @@
 	flex-direction: column;
 	justify-content: space-around;
 	//align-items: center;
+}
 
+#deconexion{
+	background-color: red;
 }
 
 #contenu{
@@ -42,3 +45,22 @@
 }
 
 
+.thème{			/*deuxieme photo*/
+
+	width:16%;
+	margin: 1px;
+	height: 150px;
+}
+
+#divimage{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap-reverse;
+}
+
+/*#photodisp{
+	background-size: cover;
+	background-position: center;
+
+}*/
