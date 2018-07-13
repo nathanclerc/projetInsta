@@ -34,12 +34,12 @@ $('#valider').click( function login(){
 	for (compte in logs){
 	//compare les logs
 	if ( username == logs[compte].identifiant && password == logs[compte].password){
-		alert ("Login successfully");
 		//vide les inputs
 		$('#identifiant').val('');
 		$('#password').val('');
 		connection = true;
-		//window.location = "profile.html"; // Redirecting to other page.
+		//redirige vers la page admin
+		location.href="admin.html";
 		return false;
 	}
 		//compare si la connection a échoué
