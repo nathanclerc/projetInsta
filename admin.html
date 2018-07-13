@@ -2,8 +2,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
+
 	<title>Espace Admin</title>
+
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
 	<link rel="shortcut icon" href="logo/1.png" type="image/x-icon" />
+
 	<link rel="stylesheet" type="text/css" href="admin.css">
 </head>
 <body>
@@ -13,7 +18,6 @@
 		<div id="profil-info">
 			<h4>Administrateur</h4>
 
-			<!-- <div class="roundedImage"></div> -->
 			<img class="photo-ronde" src="logo/5-200px.png">
 		</div>
 
@@ -22,26 +26,83 @@
 		</div> 
 
 		<div id="profil-modif">
-			<button class="bouton" id=deconexion>Log Out</button>
-			<button class="bouton" id="modif">Modifier le profil</button>
+			<button class="bouton" id=deconexion>Déconexion</button>
+			<button id="modifier" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAccount">
+			Modifier le profil
+			</button>
 		</div>
 
 	</div>
 
-<!-- fonction ajouter du contenue -->
-<div id="contenu">
-	<h2>Ajouter du contenue</h2>
+	<!-- Modal create account-->
+	<div class="modal fade" id="modalAccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div style="display: flex; flex-direction: column; align-items: center;">
+						<label>Email</label>
+						<input type="email" name="mail" id="mail">
+						<label>Nom</label>
+						<input type="text" name="nom" id="nom">
+						<label>Prénom</label>
+						<input type="text" name="prenom" id="prenom">
+						<label>Age</label>
+						<input type="number" name="age" id="age">
+						<label>Identifiant</label>
+						<input type="text" name="identifiant" id="identifiantCr">
+						<label>Mot de passe</label>
+						<input type="password" name="mdp" id="passwordCr">
+						<label>Confirmer votre mot de passe</label>
+						<input type="password" name="confmdp" id="passwordconf">
+						<label>Coordonnées</label>
+						<textarea name="textarea"
+						rows="5" cols="50" id="coord"></textarea>
+						<label for="genre">Genre</label>
+						<select name="genre" id="genre">
+							<option>Homme</option>
+							<option>Femme</option>
+							<option>Indéterminé</option>
+						</select>
+						<label>Description</label>
+						<textarea name="textarea"
+						rows="10" cols="50" id="description"></textarea>
+					</div>
+				</div>
+				<div class="modal-footer" style="display: flex; justify-content: center;">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button id="modif" type="button" class="btn btn-primary">Enregistrer les modifications</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<!-- intégrer fonction ajout photo Binjamin -->
-	<button class="bouton" id="photo">Ajouter une Photo</button>
-	<textarea class="bouton" id="commentaire"
-	rows="10" cols="50"
-	placeholder="Ajouter un commentaire ici.">
-</textarea>
-<button class="bouton" id="valider">Valider</button>
-</div>
+	<div id="contenu">
+
+		<!-- fonction ajouter du contenue -->
+
+		<h2>Ajouter du contenue</h2>
+
+		<!-- intégrer fonction ajout photo Binjamin -->
+
+		<button class="bouton" id="photo">Ajouter une Photo</button>
+
+		<textarea class="bouton" id="commentaire"
+		rows="10" cols="50"
+		placeholder="Ajouter un commentaire ici.">
+		</textarea>
+	
+		<button class="bouton" id="valider">Valider</button>
+	</div>
+
 
 <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="admin.js"></script>
 
 </body>
